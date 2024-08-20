@@ -1,0 +1,21 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=subrouser
+Group=www-data
+WorkingDirectory=/app
+ExecStart=gunicorn --daemon \
+          --access-logfile - \
+          --workers 4 \
+          --timeout 300 \
+          --bind unix:/run/gunicorn.sock \
+          subroblock.wsgi:application
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=300
+
+[Install]
+WantedBy=multi-user.target

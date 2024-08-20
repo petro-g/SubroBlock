@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-3xl font-medium tracking-[-0.2px] text-primary-foreground;
+  }
+
+  h2 {
+    @apply text-2xl font-medium tracking-[-0.2px] text-primary-foreground;
+  }
+
+  h3 {
+    @apply text-xl font-medium tracking-[-0.2px] text-primary-foreground;
+  }
+
+  h4 {
+    @apply text-lg font-medium tracking-[-0.2px] text-primary-foreground;
+  }
+
+  p { /* p1 or p2, regular. manually add font-medium where needed */
+    @apply text-base tracking-[-0.1px];
+  }
+
+  span { /* s1 or s2, regular. manually add font-medium where needed */
+    @apply text-sm tracking-[-0.1px];
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border transition-colors;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, filter, backdrop-filter;
+    transition-duration: .3s;
+  }
+
+  body {
+    @apply bg-background text-primary;
+  }
+}
+
+:root {
+  --color-background: #FFFFFF;                /* white, main background color */
+  --color-background-secondary: #F6F6F6;      /* gray, background of background */
+
+  --color-primary: #51667D;                   /* black 200 text color. most text is bland unless explicitly DARK needed, then use 300 */
+  --color-primary-foreground: #0D1C2C;        /* black 300 */
+
+  --color-secondary: #E5E5E5;                 /* black 50 */
+  --color-secondary-foreground: #8694A4;      /* black 100 */
+
+  --color-accent: #FFF4E9;                    /* orange 100, background */
+  --color-accent-muted: #FFE7D2;              /* orange 200 */
+  --color-accent-foreground: #FE891D;         /* orange 300, text */
+  --color-accent-active: #FF6B00;             /* orange 400 */
+
+  --color-destructive: #FF2B00;               /* red 200 */
+  --color-destructive-foreground: #FFE7E4;    /* red 100, same as 200 but 15% opacity */
+
+  --color-warning: #FFB525;                   /* yellow 200 */
+  --color-warning-foreground: #FFF4DF;        /* yellow 100 */
+
+  --color-success: #2FC385;                   /* green 200 */
+  --color-success-foreground: #E0F6ED;        /* green 100 */
+
+  --color-input: #F6F6F6;                     /* gray, border of input fields */
+}
+
+.dark {
+  --color-background: #51667D;
+  --color-background-secondary: #0D1C2C;
+
+  --color-primary: #FFE7D2;
+  --color-primary-foreground: #E5E5E5;
+
+  --color-secondary: #51667D;
+  --color-secondary-foreground: #F6F6F6;
+
+  --color-popover: #51667D;
+  --color-popover-foreground: #FFFFFF;
+
+  --color-input: #8694A4;
+}

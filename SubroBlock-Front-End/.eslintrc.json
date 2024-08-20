@@ -1,0 +1,134 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "warnOnUnsupportedTypeScriptVersion": false
+  },
+  "rules": {
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "object-curly-newline": [
+      "warn",
+      {
+        "multiline": true,
+        "consistent": true
+      }
+    ],
+    "quotes": [
+      "warn",
+      "double"
+    ],
+    // explicit types must be used, otherwise lots of type errors happen. This is a must for TS
+    "@typescript-eslint/no-explicit-any": [
+      "warn"
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      "off"
+    ],
+    "indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-extra-semi": "warn",
+    "comma-dangle": [
+      "warn",
+      "never"
+    ],
+    // prefer named exports for better readability and maintainability
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "off",
+    // avoid unsuded code
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "vars": "local",
+        "args": "none"
+      }
+    ],
+    "no-var": "error",
+    "no-undef": "error",
+    "no-else-return": "warn",
+    //    "no-multi-spaces": "warn",
+    "no-useless-catch": "warn",
+    "no-const-assign": "error",
+    "no-useless-escape": "warn",
+    "no-useless-return": "warn",
+    "no-useless-concat": "warn",
+    "no-useless-rename": "warn",
+    "no-implicit-globals": "warn",
+    "no-implicit-coercion": "warn",
+    "no-useless-constructor": "warn",
+    "no-prototype-builtins": "error",
+    "no-useless-computed-key": "warn",
+    "no-async-promise-executor": "error",
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "warn",
+      {
+        "max": 1
+      }
+    ],
+    // TODO refactor project until we reach complexity 8
+    // code will be much easier to read
+    "complexity": [
+      "warn",
+      14
+    ],
+    "default-case": "error",
+    "dot-notation": "warn",
+    "eqeqeq": "error",
+    "func-name-matching": "error",
+    "func-style": [
+      "warn",
+      "declaration",
+      {
+        "allowArrowFunctions": true
+      }
+    ],
+    // avoid deep scope nesting, better for readability
+    "max-depth": [
+      "warn",
+      3
+    ],
+    // cut files on smaller files
+    "max-lines": [
+      "warn",
+      {
+        "max": 512,
+        "skipBlankLines": true
+      }
+    ],
+    "no-eval": "error",
+    // difficult to read and maintain, avoid them
+    "no-nested-ternary": "warn"
+  }
+}

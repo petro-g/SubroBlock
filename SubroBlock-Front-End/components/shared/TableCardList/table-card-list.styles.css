@@ -1,0 +1,40 @@
+/*
+    table row must be rounded, but tr tag can't have border-radius for some reason
+    so we have to apply border-radius to each cell in the row
+    and apply border-radius to the first and last cell of the row to make it look like the row is rounded
+
+    can't use tailwind because :first-child and :last-child pseudo classes are not supported, so regular .css here
+ */
+
+table {
+    border-spacing: 0 3px;                              /* only vertical spacing between rows */
+    border-collapse: separate !important;               /* separate borders for each cell */
+}
+
+table tr td {
+    border-top: 1px solid theme("colors.border");      /* top border for each cell */
+    border-bottom: 1px solid theme("colors.border");   /* bottom border for each cell */
+}
+
+table tr td:first-child {
+    border-left: 1px solid theme("colors.border");     /* left border for each cell */
+}
+
+table tr td:last-child {
+    border-right: 1px solid theme("colors.border");    /* right border for each cell */
+}
+
+table tr:first-child td:first-child{
+    border-top-left-radius: 8px;
+}
+
+table tr:first-child td:last-child {
+    border-top-right-radius: 8px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}

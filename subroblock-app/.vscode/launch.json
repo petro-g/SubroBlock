@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "SubroBlock Python Debugger",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\manage.py",
+            "args": ["runserver"],
+            "django": true,
+            "justMyCode": true
+        },
+        {
+            "name": "Launch React App",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}/subroblock/client"
+        },
+        {
+            "name": "Launch Django and React",
+            "type": "launch",
+            "request": "launch",
+            "configurations": [
+                "SubroBlock Python Debugger",
+                "Launch React App"
+            ]
+        }
+    ]
+}

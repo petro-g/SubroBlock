@@ -1,0 +1,52 @@
+version: '3.7'
+
+services:
+  backend:
+    container_name: backend
+    image: 471112512572.dkr.ecr.us-east-2.amazonaws.com/subroblock:${SITE_VERSION}
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./subroblock/Dockerfile
+    environment:
+      - PYTHON_DOCKER_DEBUG=True
+    volumes:
+      - nginx:/run
+      - static-back:/static/admin/
+    networks:
+      - nginx-service-directory
+
+  #Specify the network these containers will run on
+  nginx:
+    image: 471112512572.dkr.ecr.us-east-2.amazonaws.com/subroblock_web:${SITE_VERSION}
+    container_name: nginx
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./subroblock/nginx/Dockerfile
+    command: ["nginx", "-g", "daemon off;"]
+    volumes:
+      - nginx:/run
+      - static-back:/etc/nginx/html/static/admin
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - backend
+      # - frontend
+    networks:
+      - nginx-service-directory
+
+networks:
+  nginx-service-directory:
+    driver: bridge
+
+volumes:
+  nginx:
+    driver: local
+  static-front:
+    driver: local
+  static-back:
+    driver: local
+  site:
+    driver: local

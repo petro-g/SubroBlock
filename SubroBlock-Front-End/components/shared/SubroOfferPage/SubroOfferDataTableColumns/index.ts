@@ -1,0 +1,1 @@
+export { useOffersTableColumnsDef } from "./useOffersTableColumnsDef";
